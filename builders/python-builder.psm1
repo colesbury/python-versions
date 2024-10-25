@@ -94,6 +94,15 @@ class PythonBuilder {
         return "$($this.Version.Major).$($this.Version.Minor).$($this.Version.Patch)"
     }
 
+    [bool] IsFreeThreaded() {
+        <#
+        .SYNOPSIS
+        Check if Python version is free-threaded.
+        #>
+
+        return $this.Version.BuildLabel -eq "freethreaded"
+    }
+
     [void] PreparePythonToolcacheLocation() {
         <#
         .SYNOPSIS
