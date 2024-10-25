@@ -54,13 +54,13 @@ class WinPythonBuilder : PythonBuilder {
         #>
 
         $ArchitectureExtension = ""
-        if ($this.Architecture -eq "x64") {
+        if ($this.GetHardwareArchitecture() -eq "x64") {
             if ($this.Version -ge "3.5") {
                 $ArchitectureExtension = "-amd64"
             } else {
                 $ArchitectureExtension = ".amd64"
             }
-        }elseif ($this.Architecture -eq "arm64") {
+        } elseif ($this.GetHardwareArchitecture() -eq "arm64") {
                 $ArchitectureExtension = "-arm64"
         }
 

@@ -20,13 +20,18 @@ ld_library_name = sysconfig.get_config_var('LDLIBRARY')
 
 is_shared = sysconfig.get_config_var('Py_ENABLE_SHARED')
 have_libreadline = sysconfig.get_config_var("HAVE_LIBREADLINE")
+is_free_threaded = sysconfig.get_config_var('Py_GIL_DISABLED')
 
 ### Define expected variables
 if os_type == 'Linux': expected_ld_library_extension = 'so'
 if os_type == 'Darwin': expected_ld_library_extension = 'dylib'
+if is_free_threaded:
+    framework_name = 'PythonT.framework'
+else:
+    framework_name = 'Python.framework'
 
 if pkg_installer:
-    expected_lib_dir_path = f'/Library/Frameworks/Python.framework/Versions/{version_major}.{version_minor}/lib'
+    expected_lib_dir_path = f'/Library/Frameworks/{framework_name}/Versions/{version_major}.{version_minor}/lib'
 else:
     expected_lib_dir_path = f'{os.getenv("AGENT_TOOLSDIRECTORY")}/Python/{version}/{architecture}/lib'
 
