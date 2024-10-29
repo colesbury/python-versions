@@ -62,13 +62,15 @@ function Remove-RegistryEntries {
 function Get-ExecParams {
     param(
         [Parameter(Mandatory)][Boolean] $IsMSI,
+        [Parameter(Mandatory)][Boolean] $IsFreeThreaded,
         [Parameter(Mandatory)][String] $PythonArchPath
     )
 
     if ($IsMSI) {
         "TARGETDIR=$PythonArchPath ALLUSERS=1"
     } else {
-        "DefaultAllUsersTargetDir=$PythonArchPath InstallAllUsers=1"
+        $Include_freethreaded = if ($IsFreeThreaded) { "Include_freethreaded=1" } else { "" }
+        "DefaultAllUsersTargetDir=$PythonArchPath InstallAllUsers=1 $Include_freethreaded"
     }
 }
 
@@ -82,6 +84,7 @@ $PythonVersionPath = Join-Path -Path $PythonToolcachePath -ChildPath $Version
 $PythonArchPath = Join-Path -Path $PythonVersionPath -ChildPath $Architecture
 
 $IsMSI = $PythonExecName -match "msi"
+$IsFreeThreaded = $Architecture -match "-freethreaded"
 
 $MajorVersion = $Version.Split('.')[0]
 $MinorVersion = $Version.Split('.')[1]
@@ -121,12 +124,17 @@ Write-Host "Copy Python binaries to $PythonArchPath"
 Copy-Item -Path ./$PythonExecName -Destination $PythonArchPath | Out-Null
 
 Write-Host "Install Python $Version in $PythonToolcachePath..."
-$ExecParams = Get-ExecParams -IsMSI $IsMSI -PythonArchPath $PythonArchPath
+$ExecParams = Get-ExecParams -IsMSI $IsMSI -IsFreeThreaded $IsFreeThreaded -PythonArchPath $PythonArchPath
 
 cmd.exe /c "cd $PythonArchPath && call $PythonExecName $ExecParams /quiet"
 if ($LASTEXITCODE -ne 0) {
     Throw "Error happened during Python installation"
 }
+
+# print out all files in $PythonArchPath
+Write-Host "Files in $PythonArchPath"
+$files = Get-ChildItem -Path $PythonArchPath -File -Recurse
+Write-Output $files
 
 Write-Host "Create `python3` symlink"
 if ($MajorVersion -ne "2") {
