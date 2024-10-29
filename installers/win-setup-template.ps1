@@ -136,6 +136,12 @@ Write-Host "Files in $PythonArchPath"
 $files = Get-ChildItem -Path $PythonArchPath -File -Recurse
 Write-Output $files
 
+if ($IsFreeThreaded) {
+    # Delete python.exe and create a symlink to, e.g., python3.13t.exe
+    Remove-Item -Path "$PythonArchPath\python.exe" -Force
+    New-Item -Path "$PythonArchPath\python.exe" -ItemType SymbolicLink -Value "$PythonArchPath\python${MajorVersion}.${MinorVersion}t.exe"
+}
+
 Write-Host "Create `python3` symlink"
 if ($MajorVersion -ne "2") {
     New-Item -Path "$PythonArchPath\python3.exe" -ItemType SymbolicLink -Value "$PythonArchPath\python.exe"
