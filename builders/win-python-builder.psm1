@@ -113,6 +113,7 @@ class WinPythonBuilder : PythonBuilder {
 
         $variablesToReplace = @{
             "{{__ARCHITECTURE__}}" = $this.Architecture;
+            "{{__HARDWARE_ARCHITECTURE__}}" = $this.GetHardwareArchitecture();
             "{{__VERSION__}}" = $this.Version;
             "{{__PYTHON_EXEC_NAME__}}" = $pythonExecName
         }

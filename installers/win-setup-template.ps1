@@ -1,4 +1,5 @@
 [String] $Architecture = "{{__ARCHITECTURE__}}"
+[String] $HardwareArchitecture = "{{__HARDWARE_ARCHITECTURE__}}"
 [String] $Version = "{{__VERSION__}}"
 [String] $PythonExecName = "{{__PYTHON_EXEC_NAME__}}"
 
@@ -25,7 +26,7 @@ function Remove-RegistryEntries {
         [Parameter(Mandatory)][Int32] $MinorVersion
     )
 
-    $versionFilter = Get-RegistryVersionFilter -Architecture $Architecture -MajorVersion $MajorVersion -MinorVersion $MinorVersion
+    $versionFilter = Get-RegistryVersionFilter -Architecture $HardwareArchitecture -MajorVersion $MajorVersion -MinorVersion $MinorVersion
 
     $regPath = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products"
     if (Test-Path -Path Registry::$regPath) {
