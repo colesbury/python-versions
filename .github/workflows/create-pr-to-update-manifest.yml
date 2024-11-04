@@ -2,7 +2,7 @@
 # It is designed to create a PR with update of versions-manifest.json when a new release is published
 # The GITHUB_TOKEN secret is used to create versions-manifest.json and publish related PR
 
-name: Create Pull Request
+name: Create Pull Request (called indirectly)
 on:
   workflow_call:
     inputs:
@@ -26,7 +26,7 @@ jobs:
 
     - name: Create versions-manifest.json
       run: |
-        ./helpers/packages-generation/manifest-generator.ps1 -RepositoryFullName "$env:GITHUB_REPOSITORY" `
+        ./nogil-helpers/manifest-generator.ps1 -RepositoryFullName "$env:GITHUB_REPOSITORY" `
                                                              -GitHubAccessToken "${{ secrets.GITHUB_TOKEN }}" `
                                                              -OutputFile "./versions-manifest.json" `
                                                              -ConfigurationFile "./config/${{ inputs.tool-name }}-manifest-config.json"
