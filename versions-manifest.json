@@ -182,6 +182,51 @@
         "arch": "x86",
         "platform": "win32",
         "download_url": "https://github.com/actions/python-versions/releases/download/3.13.0-11228081754/python-3.13.0-win32-x86.zip"
+      },
+      {
+        "filename": "python-3.13.0-darwin-arm64-freethreaded.tar.gz",
+        "arch": "arm64-freethreaded",
+        "platform": "darwin",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-darwin-arm64-freethreaded.tar.gz"
+      },
+      {
+        "filename": "python-3.13.0-darwin-x64-freethreaded.tar.gz",
+        "arch": "x64-freethreaded",
+        "platform": "darwin",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-darwin-x64-freethreaded.tar.gz"
+      },
+      {
+        "filename": "python-3.13.0-linux-20.04-x64-freethreaded.tar.gz",
+        "arch": "x64-freethreaded",
+        "platform": "linux",
+        "platform_version": "20.04",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-linux-20.04-x64-freethreaded.tar.gz"
+      },
+      {
+        "filename": "python-3.13.0-linux-22.04-x64-freethreaded.tar.gz",
+        "arch": "x64-freethreaded",
+        "platform": "linux",
+        "platform_version": "22.04",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-linux-22.04-x64-freethreaded.tar.gz"
+      },
+      {
+        "filename": "python-3.13.0-linux-24.04-x64-freethreaded.tar.gz",
+        "arch": "x64-freethreaded",
+        "platform": "linux",
+        "platform_version": "24.04",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-linux-24.04-x64-freethreaded.tar.gz"
+      },
+      {
+        "filename": "python-3.13.0-win32-x64-freethreaded.zip",
+        "arch": "x64-freethreaded",
+        "platform": "win32",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-win32-x64-freethreaded.zip"
+      },
+      {
+        "filename": "python-3.13.0-win32-x86-freethreaded.zip",
+        "arch": "x86-freethreaded",
+        "platform": "win32",
+        "download_url": "https://github.com/colesbury/python-versions/releases/download/3.13.0-11673339668/python-3.13.0-win32-x86-freethreaded.zip"
       }
     ]
   },
