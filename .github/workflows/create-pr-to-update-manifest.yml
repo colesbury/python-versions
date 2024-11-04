@@ -2,7 +2,7 @@
 # It is designed to create a PR with update of versions-manifest.json when a new release is published
 # The GITHUB_TOKEN secret is used to create versions-manifest.json and publish related PR
 
-name: Create Pull Request
+name: Create Pull Request (workflow)
 on:
   workflow_call:
     inputs:
