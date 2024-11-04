@@ -26,7 +26,7 @@ jobs:
 
     - name: Create versions-manifest.json
       run: |
-        ./helpers/packages-generation/manifest-generator.ps1 -RepositoryFullName "$env:GITHUB_REPOSITORY" `
+        ./nogil-helpers/manifest-generator.ps1 -RepositoryFullName "$env:GITHUB_REPOSITORY" `
                                                              -GitHubAccessToken "${{ secrets.GITHUB_TOKEN }}" `
                                                              -OutputFile "./versions-manifest.json" `
                                                              -ConfigurationFile "./config/${{ inputs.tool-name }}-manifest-config.json"
